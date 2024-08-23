@@ -1,30 +1,33 @@
-<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
-  <div class="row w-100 justify-content-center">
-   
-    <div class="col-md-6 d-none d-md-flex justify-content-center align-items-center bg-light">
-      <!--<img src="https://via.placeholder.com/500x700.png?text=Admin+Portal" alt="Admin Portal Image" class="img-fluid">-->
-    </div>
-
-    
-    <div class="col-md-6 d-flex justify-content-center align-items-center">
-      <mat-card class="w-100" style="max-width: 400px;">
-        <mat-card-header>
-          <mat-card-title class="text-center">Admin Login</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <form>
-            <mat-form-field appearance="fill" class="w-100 mb-3">
-              <mat-label>Username</mat-label>
-              <input matInput placeholder="Enter your username">
-            </mat-form-field>
-            <mat-form-field appearance="fill" class="w-100 mb-3">
-              <mat-label>Password</mat-label>
-              <input matInput type="password" placeholder="Enter your password">
-            </mat-form-field>
-            <button mat-raised-button color="primary" class="w-100">Login</button>
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
+<div class="login-container vh-100 d-flex justify-content-center align-items-center">
+  <mat-card class="login-card w-100" style="max-width: 400px; padding: 16px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <mat-card-header>
+      <mat-card-title class="text-center">Admin Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="userName" placeholder="Enter your username" required>
+          <mat-error *ngIf="loginForm.get('userName')?.hasError('required')">Username is required</mat-error>
+          <mat-error *ngIf="loginForm.get('userName')?.hasError('pattern')">Please enter a valid username.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" [type]="hide() ? 'password' : 'text'">
+          <button mat-icon-button
+                  matSuffix
+                  (click)="clickEvent($event)"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide()">
+            <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength') || loginForm.get('password')?.hasError('maxlength')">
+            Password must be at least 6 characters and a maximum of 30 characters
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="w-100">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

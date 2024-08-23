@@ -1,0 +1,26 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  max-width: 400px;
+  width: 100%;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+  .login-form mat-form-field {
+    margin-bottom: 16px; /* Space between form fields */
+  }
+
+  .login-form button {
+    margin-top: 0; /* Ensure no extra space above the button */
+  }
