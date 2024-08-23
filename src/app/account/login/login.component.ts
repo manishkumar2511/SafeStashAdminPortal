@@ -28,6 +28,6 @@ export class LoginComponent implements OnInit {
     });
   }
   login() {
-
+    alert("Login button clicked");
   }
 }
