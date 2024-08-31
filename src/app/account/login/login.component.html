@@ -1,0 +1,59 @@
+
+<div class="container-fluid SignupContainer vh-100 d-flex justify-content-center align-items-center">
+ <div class="row card formRow bg-white border-0 shadow-lg p-5" >
+  <div class="d-flex justify-content-center ">
+    <h1 class="">Admin Login</h1>
+  </div>
+  <div class="d-flex">
+    <div class="col-6">
+<div class="d-flex h-75 align-items-center">
+  <div class="signupDetails w-100">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="userName" placeholder="Enter your username" required>
+        <mat-error *ngIf="loginForm.get('userName')?.hasError('required')">Username is required</mat-error>
+        <mat-error *ngIf="loginForm.get('userName')?.hasError('pattern')">Please enter a valid username.</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" [type]="hide() ? 'password' : 'text'">
+        <button mat-icon-button
+                type="button"
+                matSuffix
+                (click)="clickEvent($event)"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()">
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength') || loginForm.get('password')?.hasError('maxlength')">
+          Password must be at least 6 characters and a maximum of 30 characters
+        </mat-error>
+      </mat-form-field>
+      <div *ngIf="!isLoading">
+        <button mat-raised-button color="primary" class="w-100 mb-2" [disabled]="loginForm.invalid ||isLoading ">
+          <span></span> <mat-icon>login</mat-icon>Login
+        </button>
+      </div>
+      <!--<div class="full-width" *ngIf="isLoading">
+        <button id="login-submit" mat-raised-button color="primary" type="button" [disabled]="loginForm.invalid || isLoading" class="full-width">
+          <span class="d-flex align-items-center">
+            <mat-progress-spinner [diameter]="24" mode="indeterminate" color="primary"></mat-progress-spinner>
+            <span style="font-style: italic;" class="ml-2">Please wait...</span>
+          </span>
+        </button>
+      </div>-->
+
+    </form>
+      <button mat-raised-button color="warn" class="w-100 forgot-password-button" (click)="forgetPassword()">Forgot Password</button>
+   </div>
+</div>
+    </div>
+    <div className="col-6">
+      <img src="../../assets/Images/login.jpg" alt="Login" />
+    </div>
+    </div>
+ </div>
+</div>
+
