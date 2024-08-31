@@ -1,13 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.angular",
     "\\src",
     "\\src\\app",
     "\\src\\app\\account",
-    "\\src\\app\\account\\account-module",
+    "\\src\\app\\account\\account-routing",
     "\\src\\app\\account\\login",
-    "\\src\\app\\shared"
+    "\\src\\app\\account\\send-email",
+    "\\src\\app\\shared",
+    "\\src\\assets",
+    "\\src\\assets\\Images"
   ],
+  "SelectedNode": "\\src\\assets\\Images\\3094352.jpg",
   "PreviewInSolutionExplorer": false
 }

@@ -4,11 +4,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -16,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     SharedModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
     
   ],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _formBuilder: FormBuilder, private _router: Router) {
 
   }
   hide = signal(true);
@@ -29,5 +30,8 @@ export class LoginComponent implements OnInit {
   }
   login() {
     alert("Login button clicked");
+  }
+  forgetPassword() {
+    this._router.navigateByUrl('account/send-email/forget-password');
   }
 }
