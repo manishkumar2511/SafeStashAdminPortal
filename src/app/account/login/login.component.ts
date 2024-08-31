@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this._formBuilder.group({
       userName: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]],
+      rememberMe: [false]
       
     });
   }
